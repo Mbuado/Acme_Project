@@ -1,0 +1,7 @@
+{
+  "EmployeeID": { "S": "101" },
+  "EmployeePIN": { "S": "111" },
+  "EmailAddress": { "S": "YOUR EMAIL HERE" },
+  "EmployeeName": { "S": "John" },
+  "PhoneNumber": { "S": "E.164 PHONE NUMBER HERE" }
+  }

@@ -1,0 +1,170 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "0b9a6301-aa9f-47ce-a531-0bd48b2e33d1",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -229.6,
+      "y": 20
+    },
+    "ActionMetadata": {
+      "cf9daa31-64f0-4b5e-abe5-a7f8452e9c3b": {
+        "position": {
+          "x": 1151.2,
+          "y": 92
+        }
+      },
+      "56457827-191a-4249-a0b3-c84bcbfb7c46": {
+        "position": {
+          "x": 255.2,
+          "y": 280
+        }
+      },
+      "89c40012-7073-4421-83c6-f12421ef0e00": {
+        "position": {
+          "x": 825.6,
+          "y": 192
+        }
+      },
+      "0b9a6301-aa9f-47ce-a531-0bd48b2e33d1": {
+        "position": {
+          "x": -78.4,
+          "y": -19.2
+        },
+        "parameters": {
+          "HoursOfOperationId": {
+            "displayName": "EmployeeBooking_DefaultHours"
+          }
+        },
+        "Hours": {
+          "id": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/operating-hours/982aea0a-ef06-4e95-8b3b-5b9a14f305ec",
+          "text": "EmployeeBooking_DefaultHours"
+        }
+      },
+      "3c45ef17-b792-4a9a-b97f-4747bc53ba48": {
+        "position": {
+          "x": 420,
+          "y": -10.4
+        }
+      },
+      "ee3f38f2-bab9-47ce-8710-585ac7bbd4b9": {
+        "position": {
+          "x": 177.6,
+          "y": 0
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "EmployeeBooking_TransferToQueue",
+    "description": "",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {},
+      "Identifier": "cf9daa31-64f0-4b5e-abe5-a7f8452e9c3b",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "Text": "Contact Center is currently closed. Working hours are Monday to Friday, from 8AM until 7PM. Goodbye."
+      },
+      "Identifier": "56457827-191a-4249-a0b3-c84bcbfb7c46",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+        "Errors": [
+          {
+            "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "We are not able to take your call right now, please try again later."
+      },
+      "Identifier": "89c40012-7073-4421-83c6-f12421ef0e00",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "cf9daa31-64f0-4b5e-abe5-a7f8452e9c3b",
+        "Errors": [
+          {
+            "NextAction": "cf9daa31-64f0-4b5e-abe5-a7f8452e9c3b",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "HoursOfOperationId": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/operating-hours/982aea0a-ef06-4e95-8b3b-5b9a14f305ec"
+      },
+      "Identifier": "0b9a6301-aa9f-47ce-a531-0bd48b2e33d1",
+      "Type": "CheckHoursOfOperation",
+      "Transitions": {
+        "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+        "Conditions": [
+          {
+            "NextAction": "ee3f38f2-bab9-47ce-8710-585ac7bbd4b9",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "True"
+              ]
+            }
+          },
+          {
+            "NextAction": "56457827-191a-4249-a0b3-c84bcbfb7c46",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "False"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "3c45ef17-b792-4a9a-b97f-4747bc53ba48",
+      "Type": "TransferContactToQueue",
+      "Transitions": {
+        "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+        "Errors": [
+          {
+            "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+            "ErrorType": "QueueAtCapacity"
+          },
+          {
+            "NextAction": "89c40012-7073-4421-83c6-f12421ef0e00",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "RecordingBehavior": {
+          "RecordedParticipants": [],
+          "IVRRecordingBehavior": "Disabled"
+        }
+      },
+      "Identifier": "ee3f38f2-bab9-47ce-8710-585ac7bbd4b9",
+      "Type": "UpdateContactRecordingBehavior",
+      "Transitions": {
+        "NextAction": "3c45ef17-b792-4a9a-b97f-4747bc53ba48"
+      }
+    }
+  ]
+}

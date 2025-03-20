@@ -1,0 +1,480 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "bb31f43d-c1cf-450f-a478-dcc7393e1d07",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -214.4,
+      "y": 46.4
+    },
+    "ActionMetadata": {
+      "b4a4c468-bdb4-43db-828d-6e03d6ba8b25": {
+        "position": {
+          "x": 375.2,
+          "y": 284
+        }
+      },
+      "09013149-2e3e-4794-9e64-fe1e777ecef9": {
+        "position": {
+          "x": 373.6,
+          "y": 476
+        }
+      },
+      "36886a6c-959f-4aa6-8795-fa22b834ae71": {
+        "position": {
+          "x": 365.6,
+          "y": -104.8
+        }
+      },
+      "be0afd78-e196-4df9-82e9-f25c70ec32b3": {
+        "position": {
+          "x": 2046.4,
+          "y": 190.4
+        }
+      },
+      "3617b2d1-5387-4633-bfb6-56247b848c68": {
+        "position": {
+          "x": 1680.8,
+          "y": -16
+        }
+      },
+      "bb31f43d-c1cf-450f-a478-dcc7393e1d07": {
+        "position": {
+          "x": -38.4,
+          "y": 36
+        },
+        "parameters": {
+          "LexV2Bot": {
+            "AliasArn": {
+              "displayName": "EmployeeBookingProd",
+              "useLexBotDropdown": true,
+              "lexV2BotName": "EmployeeBooking"
+            }
+          },
+          "LexSessionAttributes": {
+            "CC_EmployeeID": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicMetadata": {
+          "CC_EmployeeID": true
+        },
+        "useLexBotDropdown": true,
+        "lexV2BotName": "EmployeeBooking",
+        "lexV2BotAliasName": "EmployeeBookingProd",
+        "conditionMetadata": [
+          {
+            "id": "b8aead83-18d4-4855-b1d5-e6889a640f38",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "BookHotel"
+          },
+          {
+            "id": "27a85cdb-0297-4c62-844c-67e89ce2ec7e",
+            "operator": {
+              "name": "Equals",
+              "value": "Equals",
+              "shortDisplay": "="
+            },
+            "value": "AgentSupport"
+          }
+        ]
+      },
+      "6ab83f81-e000-4e1a-80d7-dd38a156a720": {
+        "position": {
+          "x": 852,
+          "y": -116.8
+        },
+        "conditionMetadata": [
+          {
+            "id": "e30d34e4-52f4-4e5c-a121-7e84b6c4de84",
+            "value": "1"
+          }
+        ]
+      },
+      "e492fffc-d5a6-4e0d-89e8-6e5110ebb7bd": {
+        "position": {
+          "x": 629.6,
+          "y": 378.4
+        },
+        "dynamicParams": []
+      },
+      "908f601f-862a-4d2d-b8d8-31b0afe032fb": {
+        "position": {
+          "x": 628.8,
+          "y": -69.6
+        },
+        "dynamicParams": []
+      },
+      "4bd6ec1e-53d1-4485-9840-10ff7f53ab61": {
+        "position": {
+          "x": 1719.2,
+          "y": 435.2
+        }
+      },
+      "81823a72-af77-4fd8-bb05-7e450854bfde": {
+        "position": {
+          "x": 1631.2,
+          "y": 206.4
+        },
+        "parameters": {
+          "ContactFlowId": {
+            "displayName": "EmployeeBooking_TransferToQueue"
+          }
+        },
+        "ContactFlow": {
+          "text": "EmployeeBooking_TransferToQueue"
+        }
+      },
+      "c1487580-a48f-4373-bbcc-5e67a244c099": {
+        "position": {
+          "x": 1408.8,
+          "y": 168
+        },
+        "conditionMetadata": [
+          {
+            "id": "6c91a6dc-5e6d-452e-b062-299d3396e551",
+            "value": "1"
+          }
+        ]
+      },
+      "86b1c70a-4aa9-4cba-b5fd-369071d35fb9": {
+        "position": {
+          "x": 1077.6,
+          "y": -88
+        },
+        "parameters": {
+          "LambdaFunctionARN": {
+            "displayName": "EmployeeBooking_SES"
+          },
+          "LambdaInvocationAttributes": {
+            "EmailAddress": {
+              "useDynamic": true
+            }
+          }
+        },
+        "dynamicMetadata": {
+          "EmailAddress": true,
+          "BookingPrice": false
+        }
+      },
+      "13606f42-304c-41a0-8ad4-1fc5669d12c3": {
+        "position": {
+          "x": 1308.8,
+          "y": -177.6
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "EmployeeBooking_LexBot",
+    "description": "",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "Text": "Sorry, I did not understand you."
+      },
+      "Identifier": "b4a4c468-bdb4-43db-828d-6e03d6ba8b25",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "e492fffc-d5a6-4e0d-89e8-6e5110ebb7bd",
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "We are experiencing technical difficulties."
+      },
+      "Identifier": "09013149-2e3e-4794-9e64-fe1e777ecef9",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "e492fffc-d5a6-4e0d-89e8-6e5110ebb7bd",
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "Your account will be charged for $.Lex.SessionAttributes.currentReservationPrice dollars."
+      },
+      "Identifier": "36886a6c-959f-4aa6-8795-fa22b834ae71",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "908f601f-862a-4d2d-b8d8-31b0afe032fb",
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "be0afd78-e196-4df9-82e9-f25c70ec32b3",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "Text": "We're sorry, we encountered an error with sending you an e-mail."
+      },
+      "Identifier": "3617b2d1-5387-4633-bfb6-56247b848c68",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "be0afd78-e196-4df9-82e9-f25c70ec32b3",
+        "Errors": [
+          {
+            "NextAction": "be0afd78-e196-4df9-82e9-f25c70ec32b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "How can I help you today?",
+        "LexV2Bot": {
+          "AliasArn": "arn:aws:lex:us-east-1:071735315475:bot-alias/8LA4RCHFMX/Q4YAO1VBAZ"
+        },
+        "LexSessionAttributes": {
+          "CC_EmployeeID": "$.Attributes.EmployeeID"
+        }
+      },
+      "Identifier": "bb31f43d-c1cf-450f-a478-dcc7393e1d07",
+      "Type": "ConnectParticipantWithLexBot",
+      "Transitions": {
+        "NextAction": "09013149-2e3e-4794-9e64-fe1e777ecef9",
+        "Conditions": [
+          {
+            "NextAction": "36886a6c-959f-4aa6-8795-fa22b834ae71",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "BookHotel"
+              ]
+            }
+          },
+          {
+            "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "AgentSupport"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "b4a4c468-bdb4-43db-828d-6e03d6ba8b25",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "09013149-2e3e-4794-9e64-fe1e777ecef9",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "5",
+        "Text": "If you'd like to get an e-mail confirmation of your booking, please press 1."
+      },
+      "Identifier": "6ab83f81-e000-4e1a-80d7-dd38a156a720",
+      "Type": "GetParticipantInput",
+      "Transitions": {
+        "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+        "Conditions": [
+          {
+            "NextAction": "86b1c70a-4aa9-4cba-b5fd-369071d35fb9",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "BookingResult": "Unsuccessful"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "e492fffc-d5a6-4e0d-89e8-6e5110ebb7bd",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Attributes": {
+          "BookingResult": "Success"
+        },
+        "TargetContact": "Current"
+      },
+      "Identifier": "908f601f-862a-4d2d-b8d8-31b0afe032fb",
+      "Type": "UpdateContactAttributes",
+      "Transitions": {
+        "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "We are sorry, an error occurred. Please try again later."
+      },
+      "Identifier": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "be0afd78-e196-4df9-82e9-f25c70ec32b3",
+        "Errors": [
+          {
+            "NextAction": "be0afd78-e196-4df9-82e9-f25c70ec32b3",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "ContactFlowId": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/contact-flow/4ebbcdb5-0b20-4df9-bbe0-45bc2f821612"
+      },
+      "Identifier": "81823a72-af77-4fd8-bb05-7e450854bfde",
+      "Type": "TransferToFlow",
+      "Transitions": {
+        "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "StoreInput": "False",
+        "InputTimeLimitSeconds": "5",
+        "Text": "If you would like to speak to an agent, please press 1."
+      },
+      "Identifier": "c1487580-a48f-4373-bbcc-5e67a244c099",
+      "Type": "GetParticipantInput",
+      "Transitions": {
+        "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+        "Conditions": [
+          {
+            "NextAction": "81823a72-af77-4fd8-bb05-7e450854bfde",
+            "Condition": {
+              "Operator": "Equals",
+              "Operands": [
+                "1"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "InputTimeLimitExceeded"
+          },
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingCondition"
+          },
+          {
+            "NextAction": "4bd6ec1e-53d1-4485-9840-10ff7f53ab61",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:us-east-1:071735315475:function:EmployeeBooking_SES",
+        "InvocationTimeLimitSeconds": "3",
+        "LambdaInvocationAttributes": {
+          "EmailAddress": "$.Attributes.EmailAddress",
+          "BookingPrice": "$.Lex.SessionAttributes.currentReservationPrice "
+        },
+        "ResponseValidation": {
+          "ResponseType": "STRING_MAP"
+        }
+      },
+      "Identifier": "86b1c70a-4aa9-4cba-b5fd-369071d35fb9",
+      "Type": "InvokeLambdaFunction",
+      "Transitions": {
+        "NextAction": "13606f42-304c-41a0-8ad4-1fc5669d12c3",
+        "Errors": [
+          {
+            "NextAction": "3617b2d1-5387-4633-bfb6-56247b848c68",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "A confirmation mail has been sent to the e-mail address we have on file for you."
+      },
+      "Identifier": "13606f42-304c-41a0-8ad4-1fc5669d12c3",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+        "Errors": [
+          {
+            "NextAction": "c1487580-a48f-4373-bbcc-5e67a244c099",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}

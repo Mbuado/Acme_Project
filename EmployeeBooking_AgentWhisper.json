@@ -1,0 +1,109 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "222caecc-c107-4553-87fc-85a74c34bb06",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": 74.4,
+      "y": 20
+    },
+    "ActionMetadata": {
+      "95dc2179-0f18-4646-8e15-15377c9cbb29": {
+        "position": {
+          "x": 856.8,
+          "y": 265.6
+        }
+      },
+      "222caecc-c107-4553-87fc-85a74c34bb06": {
+        "position": {
+          "x": 230.4,
+          "y": 96
+        }
+      },
+      "654fcdce-85d2-4472-ab68-1eedf470c7cd": {
+        "position": {
+          "x": 448.8,
+          "y": 120
+        },
+        "conditions": [],
+        "conditionMetadata": [
+          {
+            "id": "031b4126-c0a0-4970-a18c-cb7e6c9868a6",
+            "operator": {
+              "name": "Is greater than",
+              "value": "GreaterThan",
+              "shortDisplay": ">"
+            },
+            "value": "0"
+          }
+        ]
+      },
+      "3ea81c4f-bbae-4b72-84f4-3a7c786469c4": {
+        "position": {
+          "x": 656,
+          "y": 124.8
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "EmployeeBooking_AgentWhisper",
+    "description": "EmployeeBooking_AgentWhisper",
+    "type": "agentWhisper",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {},
+      "Identifier": "95dc2179-0f18-4646-8e15-15377c9cbb29",
+      "Type": "EndFlowExecution",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "Text": "$.Queue.Name"
+      },
+      "Identifier": "222caecc-c107-4553-87fc-85a74c34bb06",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "654fcdce-85d2-4472-ab68-1eedf470c7cd"
+      }
+    },
+    {
+      "Parameters": {
+        "ComparisonValue": "$.Attributes.EmployeeID"
+      },
+      "Identifier": "654fcdce-85d2-4472-ab68-1eedf470c7cd",
+      "Type": "Compare",
+      "Transitions": {
+        "NextAction": "95dc2179-0f18-4646-8e15-15377c9cbb29",
+        "Conditions": [
+          {
+            "NextAction": "3ea81c4f-bbae-4b72-84f4-3a7c786469c4",
+            "Condition": {
+              "Operator": "NumberGreaterThan",
+              "Operands": [
+                "0"
+              ]
+            }
+          }
+        ],
+        "Errors": [
+          {
+            "NextAction": "95dc2179-0f18-4646-8e15-15377c9cbb29",
+            "ErrorType": "NoMatchingCondition"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "Employee's name is $.Attributes.EmployeeName"
+      },
+      "Identifier": "3ea81c4f-bbae-4b72-84f4-3a7c786469c4",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "95dc2179-0f18-4646-8e15-15377c9cbb29"
+      }
+    }
+  ]
+}

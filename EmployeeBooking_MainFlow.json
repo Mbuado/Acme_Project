@@ -1,0 +1,227 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "b2d4e1f0-b0eb-4b82-9085-75a68849542b",
+  "Metadata": {
+    "entryPointPosition": {
+      "x": -164,
+      "y": 28.8
+    },
+    "ActionMetadata": {
+      "b2d4e1f0-b0eb-4b82-9085-75a68849542b": {
+        "position": {
+          "x": -48.8,
+          "y": 37.6
+        }
+      },
+      "710cd113-d3f5-4fd0-936e-36b1db20766f": {
+        "position": {
+          "x": 145.6,
+          "y": 45.6
+        },
+        "overrideConsoleVoice": false
+      },
+      "c4e74bde-fee0-4e4b-9b78-7c69ef73b86a": {
+        "position": {
+          "x": 388.8,
+          "y": 255.2
+        },
+        "parameters": {
+          "ContactFlowId": {
+            "displayName": "EmployeeBooking_TransferToQueue"
+          }
+        },
+        "ContactFlow": {
+          "text": "EmployeeBooking_TransferToQueue"
+        }
+      },
+      "82974efb-bb4a-4489-af68-96387be80382": {
+        "position": {
+          "x": 156.8,
+          "y": 228
+        },
+        "parameters": {
+          "QueueId": {
+            "displayName": "EmployeeBooking_Unknown"
+          }
+        },
+        "queue": {
+          "text": "EmployeeBooking_Unknown"
+        }
+      },
+      "6f0e01bd-cee9-46fd-a0ed-37a2b06ac1e2": {
+        "position": {
+          "x": 743.2,
+          "y": -1.6
+        }
+      },
+      "bbfa6511-af1a-4cfd-8baa-b0e1227c51f0": {
+        "position": {
+          "x": 988.8,
+          "y": 156
+        }
+      },
+      "639a283e-c082-4412-aff9-09e6d4791d25": {
+        "position": {
+          "x": 703.2,
+          "y": 234.4
+        }
+      },
+      "a4cec34d-2bad-4978-8ebd-3340a74c135b": {
+        "position": {
+          "x": 358.4,
+          "y": 14.4
+        },
+        "parameters": {
+          "PromptId": {
+            "displayName": "WelcomeChime"
+          }
+        },
+        "promptName": "WelcomeChime"
+      },
+      "c9ba0565-a0ea-4c36-9883-c9918dc18467": {
+        "position": {
+          "x": 552,
+          "y": 7.2
+        },
+        "parameters": {
+          "ContactFlowId": {
+            "displayName": "EmployeeBooking_TransferToQueue"
+          }
+        },
+        "ContactFlow": {
+          "text": "EmployeeBooking_TransferToQueue"
+        }
+      }
+    },
+    "Annotations": [],
+    "name": "EmployeeBooking_MainFlow",
+    "description": "",
+    "type": "contactFlow",
+    "status": "PUBLISHED",
+    "hash": {}
+  },
+  "Actions": [
+    {
+      "Parameters": {
+        "FlowLoggingBehavior": "Enabled"
+      },
+      "Identifier": "b2d4e1f0-b0eb-4b82-9085-75a68849542b",
+      "Type": "UpdateFlowLoggingBehavior",
+      "Transitions": {
+        "NextAction": "710cd113-d3f5-4fd0-936e-36b1db20766f"
+      }
+    },
+    {
+      "Parameters": {
+        "TextToSpeechVoice": "Joanna"
+      },
+      "Identifier": "710cd113-d3f5-4fd0-936e-36b1db20766f",
+      "Type": "UpdateContactTextToSpeechVoice",
+      "Transitions": {
+        "NextAction": "a4cec34d-2bad-4978-8ebd-3340a74c135b"
+      }
+    },
+    {
+      "Parameters": {
+        "ContactFlowId": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/contact-flow/4ebbcdb5-0b20-4df9-bbe0-45bc2f821612"
+      },
+      "Identifier": "c4e74bde-fee0-4e4b-9b78-7c69ef73b86a",
+      "Type": "TransferToFlow",
+      "Transitions": {
+        "NextAction": "639a283e-c082-4412-aff9-09e6d4791d25",
+        "Errors": [
+          {
+            "NextAction": "639a283e-c082-4412-aff9-09e6d4791d25",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "QueueId": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/queue/d565b1f7-41c3-4cb4-aa15-bf79a4d3a5f1"
+      },
+      "Identifier": "82974efb-bb4a-4489-af68-96387be80382",
+      "Type": "UpdateContactTargetQueue",
+      "Transitions": {
+        "NextAction": "c4e74bde-fee0-4e4b-9b78-7c69ef73b86a",
+        "Errors": [
+          {
+            "NextAction": "639a283e-c082-4412-aff9-09e6d4791d25",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "Text": "Welcome to the Acme Travel Employee Booking service."
+      },
+      "Identifier": "6f0e01bd-cee9-46fd-a0ed-37a2b06ac1e2",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "82974efb-bb4a-4489-af68-96387be80382",
+        "Errors": [
+          {
+            "NextAction": "639a283e-c082-4412-aff9-09e6d4791d25",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {},
+      "Identifier": "bbfa6511-af1a-4cfd-8baa-b0e1227c51f0",
+      "Type": "DisconnectParticipant",
+      "Transitions": {}
+    },
+    {
+      "Parameters": {
+        "Text": "We are experiencing technical difficulties. Please try again later."
+      },
+      "Identifier": "639a283e-c082-4412-aff9-09e6d4791d25",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "bbfa6511-af1a-4cfd-8baa-b0e1227c51f0",
+        "Errors": [
+          {
+            "NextAction": "bbfa6511-af1a-4cfd-8baa-b0e1227c51f0",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "PromptId": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/prompt/d49cbc6f-6539-4b7a-8755-046c41371245"
+      },
+      "Identifier": "a4cec34d-2bad-4978-8ebd-3340a74c135b",
+      "Type": "MessageParticipant",
+      "Transitions": {
+        "NextAction": "c9ba0565-a0ea-4c36-9883-c9918dc18467",
+        "Errors": [
+          {
+            "NextAction": "639a283e-c082-4412-aff9-09e6d4791d25",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    },
+    {
+      "Parameters": {
+        "ContactFlowId": "arn:aws:connect:us-east-1:071735315475:instance/8edb573d-9b54-4780-9ef9-3951cc8dc9fb/contact-flow/4ebbcdb5-0b20-4df9-bbe0-45bc2f821612"
+      },
+      "Identifier": "c9ba0565-a0ea-4c36-9883-c9918dc18467",
+      "Type": "TransferToFlow",
+      "Transitions": {
+        "NextAction": "6f0e01bd-cee9-46fd-a0ed-37a2b06ac1e2",
+        "Errors": [
+          {
+            "NextAction": "6f0e01bd-cee9-46fd-a0ed-37a2b06ac1e2",
+            "ErrorType": "NoMatchingError"
+          }
+        ]
+      }
+    }
+  ]
+}
